@@ -5,8 +5,11 @@
  */
 package tabacaria;
 
+import fillers.EstoqueFiller;
 import java.util.ArrayList;
+import javax.swing.JFrame;
 import tabacaria.models.*;
+import tabacaria.views.*;
 
 /**
  *
@@ -19,11 +22,27 @@ public class Tabacaria {
      */
     public static void main(String[] args) {
         
-        Estoque estoque = new Estoque();
+        
+        EstoqueFiller ef = new EstoqueFiller();
+        Estoque estoque = ef.getEstoque();
+        
+        
+        
+        
         Caixa caixa = new Caixa(0);
         ArrayList<Cliente> clientes;
         ArrayList<Funcionario> funcionarios;
         ArrayList<Fornecedor> fornecedores;
+        
+        Index tela = new Index(estoque);
+        
+        JFrame janelaPrincipal = new JFrame("Tabacaria");
+        janelaPrincipal.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
+        janelaPrincipal.setSize(950,730);
+        janelaPrincipal.setResizable(false);
+        janelaPrincipal.setLocationRelativeTo(null);
+        janelaPrincipal.add(tela);
+        janelaPrincipal.setVisible(true);
         
     }
     

@@ -5,19 +5,41 @@
  */
 package tabacaria.views;
 
+import javax.swing.RowFilter;
+import javax.swing.table.TableRowSorter;
+import tabacaria.models.Estoque;
+import tabacaria.models.EstoqueTableModel;
+
 /**
  *
  * @author pedro
  */
 public class Index extends javax.swing.JPanel {
 
-    /**
-     * Creates new form Index
-     */
-    public Index() {
+    private final Estoque estoque;
+    private EstoqueTableModel estoqueTM;
+    TableRowSorter<EstoqueTableModel> sorterEstoque;
+    
+    public Index(Estoque estoque) {
+        this.estoque = estoque;
+        this.estoqueTM = new EstoqueTableModel(estoque);
+        this.sorterEstoque = new TableRowSorter<>(estoqueTM);
+        
+        
+        
         initComponents();
+        
+        //Cria os sorters para a filtragem das tabelas após os componentes gráficos terem sido iniciados
+        
+        ProdutosJTable.setRowSorter(this.sorterEstoque);
+        
+        
+        
+        
+        
+        
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -28,16 +50,16 @@ public class Index extends javax.swing.JPanel {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jTabbedPane1 = new javax.swing.JTabbedPane();
+        LogoImg = new javax.swing.JLabel();
+        TabacariaTxt = new javax.swing.JLabel();
+        JanelaDeAbas = new javax.swing.JTabbedPane();
         JPEstoque = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jButton2 = new javax.swing.JButton();
+        ProdutoLabel = new javax.swing.JLabel();
+        ProdutoSearchTxtField = new javax.swing.JTextField();
+        ProdutoSearchBtn = new javax.swing.JButton();
+        ProdutosScrollPane = new javax.swing.JScrollPane();
+        ProdutosJTable = new javax.swing.JTable();
+        GerenciarCategoriaBtn = new javax.swing.JButton();
         JPClientes = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -82,12 +104,12 @@ public class Index extends javax.swing.JPanel {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tabacaria/img/free_horizontal_on_white_by_logaster.png"))); // NOI18N
+        LogoImg.setBackground(new java.awt.Color(255, 255, 255));
+        LogoImg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tabacaria/img/free_horizontal_on_white_by_logaster.png"))); // NOI18N
 
-        jLabel2.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 82)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 204, 51));
-        jLabel2.setText("Tabacaria");
+        TabacariaTxt.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 82)); // NOI18N
+        TabacariaTxt.setForeground(new java.awt.Color(255, 204, 51));
+        TabacariaTxt.setText("Tabacaria");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -95,62 +117,56 @@ public class Index extends javax.swing.JPanel {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
+                .addComponent(LogoImg)
                 .addGap(42, 42, 42)
-                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(TabacariaTxt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(LogoImg, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(TabacariaTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.setBackground(new java.awt.Color(255, 255, 255));
-        jTabbedPane1.setForeground(new java.awt.Color(255, 153, 0));
-        jTabbedPane1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        JanelaDeAbas.setBackground(new java.awt.Color(255, 255, 255));
+        JanelaDeAbas.setForeground(new java.awt.Color(255, 153, 0));
+        JanelaDeAbas.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         JPEstoque.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel3.setText("Produto:");
+        ProdutoLabel.setText("Produto:");
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tabacaria/img/search.png"))); // NOI18N
-        jButton1.setText("Buscar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        ProdutoSearchTxtField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                ProdutoSearchTxtFieldActionPerformed(evt);
+            }
+        });
+        ProdutoSearchTxtField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                refreshFilterProduto(evt);
             }
         });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
-            },
-            new String [] {
-                "Produto", "Categoria", "Preço de Custo", "Preço de Venda", "Quantidade"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.Float.class, java.lang.Float.class, java.lang.Integer.class
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
+        ProdutoSearchBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tabacaria/img/search.png"))); // NOI18N
+        ProdutoSearchBtn.setText("Buscar");
+        ProdutoSearchBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ProdutoSearchBtnActionPerformed(evt);
             }
         });
-        jScrollPane1.setViewportView(jTable1);
 
-        jButton2.setBackground(new java.awt.Color(255, 255, 255));
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tabacaria/img/settings.png"))); // NOI18N
-        jButton2.setText("Gerenciar Categorias");
+        ProdutosJTable.setAutoCreateRowSorter(true);
+        ProdutosJTable.setModel(estoqueTM);
+        ProdutosScrollPane.setViewportView(ProdutosJTable);
+
+        GerenciarCategoriaBtn.setBackground(new java.awt.Color(255, 255, 255));
+        GerenciarCategoriaBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tabacaria/img/settings.png"))); // NOI18N
+        GerenciarCategoriaBtn.setText("Gerenciar Categorias");
 
         javax.swing.GroupLayout JPEstoqueLayout = new javax.swing.GroupLayout(JPEstoque);
         JPEstoque.setLayout(JPEstoqueLayout);
@@ -159,17 +175,17 @@ public class Index extends javax.swing.JPanel {
             .addGroup(JPEstoqueLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(JPEstoqueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(ProdutosScrollPane, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JPEstoqueLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(ProdutoSearchBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(JPEstoqueLayout.createSequentialGroup()
                         .addGroup(JPEstoqueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton2)
+                            .addComponent(GerenciarCategoriaBtn)
                             .addGroup(JPEstoqueLayout.createSequentialGroup()
-                                .addComponent(jLabel3)
+                                .addComponent(ProdutoLabel)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 637, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(ProdutoSearchTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, 637, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 151, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -178,17 +194,17 @@ public class Index extends javax.swing.JPanel {
             .addGroup(JPEstoqueLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(JPEstoqueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
+                    .addComponent(ProdutoLabel)
+                    .addComponent(ProdutoSearchTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ProdutoSearchBtn))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 305, Short.MAX_VALUE)
+                .addComponent(ProdutosScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 305, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton2)
+                .addComponent(GerenciarCategoriaBtn)
                 .addGap(7, 7, 7))
         );
 
-        jTabbedPane1.addTab("Estoque", JPEstoque);
+        JanelaDeAbas.addTab("Estoque", JPEstoque);
 
         JPClientes.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -261,7 +277,7 @@ public class Index extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        jTabbedPane1.addTab("Clientes", JPClientes);
+        JanelaDeAbas.addTab("Clientes", JPClientes);
 
         JPFuncionarios.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -334,7 +350,7 @@ public class Index extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        jTabbedPane1.addTab("Funcionários", JPFuncionarios);
+        JanelaDeAbas.addTab("Funcionários", JPFuncionarios);
 
         JPCompras.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -399,7 +415,7 @@ public class Index extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        jTabbedPane1.addTab("Compras", JPCompras);
+        JanelaDeAbas.addTab("Compras", JPCompras);
 
         JPVendas.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -463,7 +479,7 @@ public class Index extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        jTabbedPane1.addTab("Vendas", JPVendas);
+        JanelaDeAbas.addTab("Vendas", JPVendas);
 
         JPRelatorios.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -563,7 +579,7 @@ public class Index extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        jTabbedPane1.addTab("Fluxo de Caixa", JPRelatorios);
+        JanelaDeAbas.addTab("Fluxo de Caixa", JPRelatorios);
 
         RCompraBtn.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         RCompraBtn.setForeground(new java.awt.Color(255, 153, 0));
@@ -583,7 +599,7 @@ public class Index extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTabbedPane1)
+                    .addComponent(JanelaDeAbas)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(RCompraBtn)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -595,7 +611,7 @@ public class Index extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 426, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(JanelaDeAbas, javax.swing.GroupLayout.PREFERRED_SIZE, 426, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(RCompraBtn)
@@ -604,9 +620,9 @@ public class Index extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void ProdutoSearchBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ProdutoSearchBtnActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_ProdutoSearchBtnActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
@@ -624,33 +640,52 @@ public class Index extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton8ActionPerformed
 
+    private void ProdutoSearchTxtFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ProdutoSearchTxtFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ProdutoSearchTxtFieldActionPerformed
+
+    private void refreshFilterProduto(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_refreshFilterProduto
+        RowFilter<EstoqueTableModel, Object> rf = null;
+        //If current expression doesn't parse, don't update.
+        try {
+            rf = RowFilter.regexFilter("(?i)" + ProdutoSearchTxtField.getText(),0);
+        } catch (java.util.regex.PatternSyntaxException e) {
+            return;
+        }
+        sorterEstoque.setRowFilter(rf);
+    }//GEN-LAST:event_refreshFilterProduto
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton EVendaBtn;
+    private javax.swing.JButton GerenciarCategoriaBtn;
     private javax.swing.JPanel JPClientes;
     private javax.swing.JPanel JPCompras;
     private javax.swing.JPanel JPEstoque;
     private javax.swing.JPanel JPFuncionarios;
     private javax.swing.JPanel JPRelatorios;
     private javax.swing.JPanel JPVendas;
+    private javax.swing.JTabbedPane JanelaDeAbas;
+    private javax.swing.JLabel LogoImg;
+    private javax.swing.JLabel ProdutoLabel;
+    private javax.swing.JButton ProdutoSearchBtn;
+    private javax.swing.JTextField ProdutoSearchTxtField;
+    private javax.swing.JTable ProdutosJTable;
+    private javax.swing.JScrollPane ProdutosScrollPane;
     private javax.swing.JButton RCompraBtn;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JLabel TabacariaTxt;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -658,20 +693,16 @@ public class Index extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
-    private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
     private javax.swing.JTable jTable3;
     private javax.swing.JTable jTable5;
     private javax.swing.JTable jTable6;
     private javax.swing.JTable jTable7;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;

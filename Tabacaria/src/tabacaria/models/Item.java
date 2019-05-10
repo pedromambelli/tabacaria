@@ -14,6 +14,12 @@ public class Item {
     private Produto produto;
     private int quantidade;
     
+    public Item(String nome, String descricao, float pCompra, float pVenda, int quantidade){
+        this.produto = new Produto(nome, descricao, pCompra, pVenda);
+        this.quantidade = quantidade;
+    }
+
+    
     public Produto getProduto() {
         return produto;
     }

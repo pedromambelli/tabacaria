@@ -17,12 +17,12 @@ public class Produto {
     //private int quantidade;
     private Categoria categoria;
 
-    public Produto(String nome, String descricao, float pCompra, float pVenda, Categoria categoria) {
+    public Produto(String nome, String descricao, float pCompra, float pVenda) {
         this.nome = nome;
         this.descricao = descricao;
         this.pCompra = pCompra;
         this.pVenda = pVenda;
-        this.categoria = categoria;
+        this.categoria = new Categoria("categoria teste", "descricao teste", 5);
     }
     
     

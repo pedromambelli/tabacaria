@@ -12,7 +12,15 @@ import java.util.ArrayList;
  * @author pedro
  */
 public class Estoque {
-    private ArrayList<Item> estoque;
+    private final ArrayList<Item> estoque;
+
+    public Estoque() {
+        this.estoque = new ArrayList<>();
+    }
+    
+    public Item getItem(int ID){
+        return this.estoque.get(ID);
+    }
     
     public int incluir(Item item){
         for(int i = 0; i < estoque.size(); i++){
@@ -42,5 +50,9 @@ public class Estoque {
              }    
         }
         return -2; // -2 representará que o produto não existe no estoque
+    }
+    
+    public int produtosDiferentes(){
+        return this.estoque.size();
     }
 }
