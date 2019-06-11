@@ -5,8 +5,12 @@
  */
 package tabacaria;
 
+import fillers.BancoDeDados;
 import fillers.EstoqueFiller;
+
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 import javax.swing.JFrame;
 import tabacaria.models.*;
 import tabacaria.views.*;
@@ -30,10 +34,9 @@ public class Tabacaria {
         
         
         Caixa caixa = new Caixa(0);
-        ArrayList<Cliente> clientes;
-        ArrayList<Funcionario> funcionarios;
-        ArrayList<Fornecedor> fornecedores;
-        
+
+        BancoDeDados.addCliente(new Cliente("Gustavo", 126, new Data(04,07,87)));
+
         Index tela = new Index(estoque);
         
         JFrame janelaPrincipal = new JFrame("Tabacaria");

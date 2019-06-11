@@ -7,6 +7,10 @@ package tabacaria.views;
 
 import javax.swing.RowFilter;
 import javax.swing.table.TableRowSorter;
+
+import fillers.BancoDeDados;
+import tabacaria.models.Cliente;
+import tabacaria.models.ClienteTableModel;
 import tabacaria.models.Estoque;
 import tabacaria.models.EstoqueTableModel;
 
@@ -18,11 +22,14 @@ public class Index extends javax.swing.JPanel {
 
     private final Estoque estoque;
     private EstoqueTableModel estoqueTM;
+    private ClienteTableModel clienteTM;
+    private BancoDeDados bancoDeDados;
     TableRowSorter<EstoqueTableModel> sorterEstoque;
     
     public Index(Estoque estoque) {
         this.estoque = estoque;
         this.estoqueTM = new EstoqueTableModel(estoque);
+        this.clienteTM = new ClienteTableModel(bancoDeDados.getClientes());
         this.sorterEstoque = new TableRowSorter<>(estoqueTM);
         
         
@@ -210,25 +217,7 @@ public class Index extends javax.swing.JPanel {
 
         jLabel4.setText("Cliente:");
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
-            },
-            new String [] {
-                "Nome", "CPF", "Data de Nascimento"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-        });
+        jTable2.setModel(clienteTM);
         jScrollPane2.setViewportView(jTable2);
 
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tabacaria/img/search.png"))); // NOI18N

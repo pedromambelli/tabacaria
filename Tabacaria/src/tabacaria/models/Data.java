@@ -20,6 +20,11 @@ public class Data {
         this.ano = ano;
     }
 
+    @Override
+    public String toString(){
+        return this.dia + "/" + this.mes + "/" + this.ano;
+    }
+
     public int getDia() {
         return dia;
     }
