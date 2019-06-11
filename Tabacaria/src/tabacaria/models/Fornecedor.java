@@ -6,39 +6,52 @@
 package tabacaria.models;
 
 /**
- *
  * @author pedro
  */
 public class Fornecedor {
-    
-    private long CNPJ;
-    private String nome;
-    private long telefone;
-    
-    public long getCNPJ() {
-        return CNPJ;
-    }
 
-    public void setCNPJ(long CNPJ) {
-        this.CNPJ = CNPJ;
-    }
+	private long CNPJ;
 
-    public String getNome() {
-        return nome;
-    }
+	private String nome;
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
+	private long telefone;
 
-    public long getTelefone() {
-        return telefone;
-    }
+	public Fornecedor(long CNPJ, String nome, long telefone) {
 
-    public void setTelefone(long telefone) {
-        this.telefone = telefone;
-    }
-    
-    
-    
+		this.CNPJ = CNPJ;
+		this.nome = nome;
+		this.telefone = telefone;
+	}
+
+	public long getCNPJ() {
+
+		return CNPJ;
+	}
+
+	public void setCNPJ(long CNPJ) {
+
+		this.CNPJ = CNPJ;
+	}
+
+	public String getNome() {
+
+		return nome;
+	}
+
+	public void setNome(String nome) {
+
+		this.nome = nome;
+	}
+
+	public long getTelefone() {
+
+		return telefone;
+	}
+
+	public void setTelefone(long telefone) {
+
+		this.telefone = telefone;
+	}
+
+
 }

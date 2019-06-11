@@ -9,40 +9,47 @@ import java.util.ArrayList;
 //import java.util.Date;
 
 /**
- *
  * @author pedro
  */
 public abstract class Transacao {
-    protected ArrayList<Item> lista;
-    protected Funcionario responsavel;
-    protected Data data;
 
-    public ArrayList<Item> getLista() {
-        return lista;
-    }
+	protected ArrayList<Item> lista;
 
-    public void setLista(ArrayList<Item> lista) {
-        this.lista = lista;
-    }
+	protected Funcionario responsavel;
 
-    public Funcionario getResponsavel() {
-        return responsavel;
-    }
+	protected Data data;
 
-    public void setResponsavel(Funcionario responsavel) {
-        this.responsavel = responsavel;
-    }
+	public ArrayList<Item> getLista() {
 
-    public Data getData() {
-        return data;
-    }
+		return lista;
+	}
 
-    public void setData(Data data) {
-        this.data = data;
-    }
-    
-    public abstract float getMovimentacao();
-    
-    
-    
+	public void setLista(ArrayList<Item> lista) {
+
+		this.lista = lista;
+	}
+
+	public Funcionario getResponsavel() {
+
+		return responsavel;
+	}
+
+	public void setResponsavel(Funcionario responsavel) {
+
+		this.responsavel = responsavel;
+	}
+
+	public Data getData() {
+
+		return data;
+	}
+
+	public void setData(Data data) {
+
+		this.data = data;
+	}
+
+	public abstract float getMovimentacao();
+
+
 }

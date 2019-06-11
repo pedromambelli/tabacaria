@@ -6,33 +6,36 @@
 package tabacaria.models;
 
 /**
- *
  * @author pedro
  */
 public class Compra extends Transacao {
-    private Fornecedor fornecedor;
 
-    public Compra(Fornecedor fornecedor) {
-        this.fornecedor = fornecedor;
-    }
-    
-    
+	private Fornecedor fornecedor;
 
-    public Fornecedor getFornecedor() {
-        return fornecedor;
-    }
+	public Compra(Fornecedor fornecedor) {
 
-    public void setFornecedor(Fornecedor fornecedor) {
-        this.fornecedor = fornecedor;
-    }
+		this.fornecedor = fornecedor;
+	}
 
-    @Override
-    public float getMovimentacao() {
-        float custoTotal = 0;
-        for(int i= 0; i<super.lista.size(); i++){
-            custoTotal += super.lista.get(i).getCusto();
-        }
-        return custoTotal*-1; //retorna negativo
-    }
-    
+
+	public Fornecedor getFornecedor() {
+
+		return fornecedor;
+	}
+
+	public void setFornecedor(Fornecedor fornecedor) {
+
+		this.fornecedor = fornecedor;
+	}
+
+	@Override
+	public float getMovimentacao() {
+
+		float custoTotal = 0;
+		for (int i = 0; i < super.lista.size(); i++) {
+			custoTotal += super.lista.get(i).getCusto();
+		}
+		return custoTotal * -1; //retorna negativo
+	}
+
 }

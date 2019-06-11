@@ -6,46 +6,53 @@
 package tabacaria.models;
 
 /**
- *
  * @author pedro
  */
 public class Categoria {
-    private String nome;
-    private String descricao;
-    private float taxa;
 
-    public Categoria(String nome, String descricao, float taxa) {
-        this.nome = nome;
-        this.descricao = descricao;
-        this.taxa = taxa;
-    }
-    
-    
+	private String nome;
 
-    public String getNome() {
-        return nome;
-    }
+	private String descricao;
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
+	private float taxa;
 
-    public String getDescricao() {
-        return descricao;
-    }
+	public Categoria(String nome, String descricao, float taxa) {
 
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
-    }
+		this.nome = nome;
+		this.descricao = descricao;
+		this.taxa = taxa;
+	}
 
-    public float getTaxa() {
-        return taxa;
-    }
 
-    public void setTaxa(float taxa) {
-        this.taxa = taxa;
-    }
-    
-    
-    
+	public String getNome() {
+
+		return nome;
+	}
+
+	public void setNome(String nome) {
+
+		this.nome = nome;
+	}
+
+	public String getDescricao() {
+
+		return descricao;
+	}
+
+	public void setDescricao(String descricao) {
+
+		this.descricao = descricao;
+	}
+
+	public float getTaxa() {
+
+		return taxa;
+	}
+
+	public void setTaxa(float taxa) {
+
+		this.taxa = taxa;
+	}
+
+
 }

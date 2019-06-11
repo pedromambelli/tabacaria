@@ -6,66 +6,79 @@
 package tabacaria.models;
 
 /**
- *
  * @author pedro
  */
 public class Funcionario {
-    private long CPF;
-    private String nome;
-    private float salario;
-    private String senha;
-    private int acesso;
 
-    public Funcionario(long CPF, String nome, float salario, String senha) {
-        this.CPF = CPF;
-        this.nome = nome;
-        this.salario = salario;
-        this.senha = senha;
-        this.acesso =  0;
-    }
+	private long CPF;
 
-    
-    
-    public long getCPF() {
-        return CPF;
-    }
+	private String nome;
 
-    public void setCPF(long CPF) {
-        this.CPF = CPF;
-    }
+	private float salario;
 
-    public String getNome() {
-        return nome;
-    }
+	private String senha;
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
+	private int acesso;
 
-    public float getSalario() {
-        return salario;
-    }
+	public Funcionario(long CPF, String nome, float salario, String senha) {
 
-    public void setSalario(float salario) {
-        this.salario = salario;
-    }
+		this.CPF = CPF;
+		this.nome = nome;
+		this.salario = salario;
+		this.senha = senha;
+		this.acesso = 0;
+	}
 
-    public String getSenha() {
-        return senha;
-    }
 
-    public void setSenha(String senha) {
-        this.senha = senha;
-    }
+	public long getCPF() {
 
-    public int getAcesso() {
-        return acesso;
-    }
+		return CPF;
+	}
 
-    public void setAcesso(int acesso) {
-        this.acesso = acesso;
-    }
-    
-    
-    
+	public void setCPF(long CPF) {
+
+		this.CPF = CPF;
+	}
+
+	public String getNome() {
+
+		return nome;
+	}
+
+	public void setNome(String nome) {
+
+		this.nome = nome;
+	}
+
+	public float getSalario() {
+
+		return salario;
+	}
+
+	public void setSalario(float salario) {
+
+		this.salario = salario;
+	}
+
+	public String getSenha() {
+
+		return senha;
+	}
+
+	public void setSenha(String senha) {
+
+		this.senha = senha;
+	}
+
+	public int getAcesso() {
+
+		return acesso;
+	}
+
+	public void setAcesso(int acesso) {
+
+		this.acesso = acesso;
+	}
+
+
 }

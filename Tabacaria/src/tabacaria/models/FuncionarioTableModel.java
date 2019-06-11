@@ -11,30 +11,30 @@ import java.util.List;
 /**
  * @author pedro
  */
-public class ClienteTableModel extends AbstractTableModel {
+public class FuncionarioTableModel extends AbstractTableModel {
 
 	private static final int NOME = 0;
 
 	private static final int CPF = 1;
 
-	private static final int NASCIMENTO = 2;
+	private static final int SALARIO = 2;
 
-	private static final int MAIORIDADE = 3;
+	private static final int ACESSO = 3;
 
-	private final List<Cliente> clientes;
+	private final List<Funcionario> funcionarios;
 
-	private final String[] colunas = new String[]{"Nome", "CPF", "Nascimento", "Maior 18"};
+	private final String[] colunas = new String[]{"Nome", "CPF", "Salario", "Acesso"};
 
-	public ClienteTableModel(List<Cliente> clientes) {
+	public FuncionarioTableModel(List<Funcionario> funcionarios) {
 
-		this.clientes = clientes;
+		this.funcionarios = funcionarios;
 
 	}
 
 	@Override
 	public int getRowCount() {
 
-		return this.clientes.size();
+		return this.funcionarios.size();
 	}
 
 	@Override
@@ -47,16 +47,16 @@ public class ClienteTableModel extends AbstractTableModel {
 	@Override
 	public Object getValueAt(int rowIndex, int columnIndex) {
 		// Pega o sócio referente a linha especificada.
-		Cliente cliente = this.clientes.get(rowIndex);
+		Funcionario funcionario = this.funcionarios.get(rowIndex);
 		switch (columnIndex) {
 			case NOME:
-				return cliente.getNome();
+				return funcionario.getNome();
+			case SALARIO:
+				return funcionario.getSalario();
 			case CPF:
-				return cliente.getCPF();
-			case NASCIMENTO:
-				return cliente.getNascimento().toString();
-			case MAIORIDADE:
-				return cliente.isDezoitoMais() ? "Sim" : "Nao";
+				return funcionario.getCPF();
+			case ACESSO:
+				return funcionario.getAcesso();
 
 			default:
 				// Não deve ocorrer, pois só existem 5 colunas

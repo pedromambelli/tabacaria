@@ -6,55 +6,64 @@
 package tabacaria.models;
 
 /**
- *
  * @author pedro
  */
 public class Cliente {
-    
-    private String nome;
-    private long CPF;
-    private Data nascimento;
-    private boolean dezoitoMais;
 
-    public Cliente(String nome, long CPF, Data nascimento) {
-        this.nome = nome;
-        this.CPF = CPF;
-        this.nascimento = nascimento;
-    }
+	private String nome;
 
-    public String getNome() {
-        return nome;
-    }
+	private long CPF;
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
+	private Data nascimento;
 
-    public long getCPF() {
-        return CPF;
-    }
+	private boolean dezoitoMais;
 
-    public void setCPF(long CPF) {
-        this.CPF = CPF;
-    }
+	public Cliente(String nome, long CPF, Data nascimento) {
 
-    public Data getNascimento() {
-        return nascimento;
-    }
+		this.nome = nome;
+		this.CPF = CPF;
+		this.nascimento = nascimento;
+	}
 
-    public void setNascimento(Data nascimento) {
-        this.nascimento = nascimento;
-    }
+	public String getNome() {
 
-    public boolean isDezoitoMais() {
-        return dezoitoMais;
-    }
+		return nome;
+	}
 
-    public void setDezoitoMais(boolean dezoitoMais) {
-        this.dezoitoMais = dezoitoMais;
-    }
-    
-        
-	
-    
+	public void setNome(String nome) {
+
+		this.nome = nome;
+	}
+
+	public long getCPF() {
+
+		return CPF;
+	}
+
+	public void setCPF(long CPF) {
+
+		this.CPF = CPF;
+	}
+
+	public Data getNascimento() {
+
+		return nascimento;
+	}
+
+	public void setNascimento(Data nascimento) {
+
+		this.nascimento = nascimento;
+	}
+
+	public boolean isDezoitoMais() {
+
+		return dezoitoMais;
+	}
+
+	public void setDezoitoMais(boolean dezoitoMais) {
+
+		this.dezoitoMais = dezoitoMais;
+	}
+
+
 }

@@ -11,52 +11,48 @@ import java.util.List;
 /**
  * @author pedro
  */
-public class ClienteTableModel extends AbstractTableModel {
+public class FornecedorTableModel extends AbstractTableModel {
 
 	private static final int NOME = 0;
 
-	private static final int CPF = 1;
+	private static final int CNPJ = 1;
 
-	private static final int NASCIMENTO = 2;
+	private static final int TELEFONE = 2;
 
-	private static final int MAIORIDADE = 3;
+	private final List<Fornecedor> fornecedores;
 
-	private final List<Cliente> clientes;
+	private final String[] colunas = new String[]{"Nome", "CNPJ", "Telefone"};
 
-	private final String[] colunas = new String[]{"Nome", "CPF", "Nascimento", "Maior 18"};
+	public FornecedorTableModel(List<Fornecedor> fornecedores) {
 
-	public ClienteTableModel(List<Cliente> clientes) {
-
-		this.clientes = clientes;
+		this.fornecedores = fornecedores;
 
 	}
 
 	@Override
 	public int getRowCount() {
 
-		return this.clientes.size();
+		return this.fornecedores.size();
 	}
 
 	@Override
 	public int getColumnCount() {
 
-		return 4;
+		return 3;
 	}
 
 
 	@Override
 	public Object getValueAt(int rowIndex, int columnIndex) {
 		// Pega o sócio referente a linha especificada.
-		Cliente cliente = this.clientes.get(rowIndex);
+		Fornecedor fornecedor = this.fornecedores.get(rowIndex);
 		switch (columnIndex) {
 			case NOME:
-				return cliente.getNome();
-			case CPF:
-				return cliente.getCPF();
-			case NASCIMENTO:
-				return cliente.getNascimento().toString();
-			case MAIORIDADE:
-				return cliente.isDezoitoMais() ? "Sim" : "Nao";
+				return fornecedor.getNome();
+			case CNPJ:
+				return fornecedor.getCNPJ();
+			case TELEFONE:
+				return fornecedor.getTelefone();
 
 			default:
 				// Não deve ocorrer, pois só existem 5 colunas

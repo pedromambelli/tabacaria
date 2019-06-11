@@ -6,66 +6,80 @@
 package tabacaria.models;
 
 /**
- *
  * @author pedro
  */
 public class Produto {
-    private String nome;
-    private String descricao;
-    private float pCompra;
-    private float pVenda;
-    //private int quantidade;
-    private Categoria categoria;
 
-    public Produto(String nome, String descricao, float pCompra, float pVenda) {
-        this.nome = nome;
-        this.descricao = descricao;
-        this.pCompra = pCompra;
-        this.pVenda = pVenda;
-        this.categoria = new Categoria("categoria teste", "descricao teste", 5);
-    }
-    
-    
+	private String nome;
 
-    public String getNome() {
-        return nome;
-    }
+	private String descricao;
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
+	private float pCompra;
 
-    public String getDescricao() {
-        return descricao;
-    }
+	private float pVenda;
 
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
-    }
+	//private int quantidade;
+	private Categoria categoria;
 
-    public float getpCompra() {
-        return pCompra;
-    }
+	public Produto(String nome, String descricao, float pCompra, float pVenda) {
 
-    public void setpCompra(float pCompra) {
-        this.pCompra = pCompra;
-    }
+		this.nome = nome;
+		this.descricao = descricao;
+		this.pCompra = pCompra;
+		this.pVenda = pVenda;
+		this.categoria = new Categoria("categoria teste", "descricao teste", 5);
+	}
 
-    public float getpVenda() {
-        return pVenda;
-    }
 
-    public void setpVenda(float pVenda) {
-        this.pVenda = pVenda;
-    }
+	public String getNome() {
 
-    public Categoria getCategoria() {
-        return categoria;
-    }
+		return nome;
+	}
 
-    public void setCategoria(Categoria categoria) {
-        this.categoria = categoria;
-    }
-    
-    
+	public void setNome(String nome) {
+
+		this.nome = nome;
+	}
+
+	public String getDescricao() {
+
+		return descricao;
+	}
+
+	public void setDescricao(String descricao) {
+
+		this.descricao = descricao;
+	}
+
+	public float getpCompra() {
+
+		return pCompra;
+	}
+
+	public void setpCompra(float pCompra) {
+
+		this.pCompra = pCompra;
+	}
+
+	public float getpVenda() {
+
+		return pVenda;
+	}
+
+	public void setpVenda(float pVenda) {
+
+		this.pVenda = pVenda;
+	}
+
+	public Categoria getCategoria() {
+
+		return categoria;
+	}
+
+	public void setCategoria(Categoria categoria) {
+
+		this.categoria = categoria;
+	}
+
+
 }

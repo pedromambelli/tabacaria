@@ -5,33 +5,33 @@
  */
 package tabacaria.models;
 
-import java.util.ArrayList;
-
 /**
- *
  * @author pedro
  */
-public class Venda extends Transacao{
-    
-    private Cliente cliente;
+public class Venda extends Transacao {
 
-    public Cliente getCliente() {
-        return cliente;
-    }
+	private Cliente cliente;
 
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
-    }
-    
+	public Cliente getCliente() {
 
-    @Override
-    public float getMovimentacao() {
-        float ganho = 0;
-        for(int i= 0; i<super.lista.size(); i++){
-            ganho += super.lista.get(i).getValorVenda();
-        }
-        return ganho; //retorna negativo
-    }
-    
-    
+		return cliente;
+	}
+
+	public void setCliente(Cliente cliente) {
+
+		this.cliente = cliente;
+	}
+
+
+	@Override
+	public float getMovimentacao() {
+
+		float ganho = 0;
+		for (int i = 0; i < super.lista.size(); i++) {
+			ganho += super.lista.get(i).getValorVenda();
+		}
+		return ganho; //retorna negativo
+	}
+
+
 }
